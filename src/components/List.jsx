@@ -112,7 +112,7 @@ const Todo = styled.div`
   background-color: #fffdf6;
   background-color: ${(props)=>props.rgba};
   margin: 0 30px 30px 0;
-  box-shadow: 5px 5px 5px 5px gray;
+  box-shadow: 5px 5px 3px 3px gray;
 `;
 
 const StDetailBtn = styled.button`

@@ -47,6 +47,8 @@ const initialState = [
 
 // Reducer: todos
 const todos = (state = initialState, action) => {
+
+  console.log(action)
   switch (action.type) {
     case ADD_TODO:
       const newTodo = [...state, action.payload];
@@ -61,7 +63,7 @@ const todos = (state = initialState, action) => {
         if (todo.id === action.payload) {
           return { ...todo, isDone: !todo.isDone }; 
         } else {
-          return { ...todo };
+          return todo;
         }
       });
       return toggleStatusTodo;

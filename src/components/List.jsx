@@ -14,6 +14,7 @@ const List = () => {
   const onDelete = (id) => {
     dispatch(deleteTodo(id));
   };
+  
   const onToggle = (id) => {
     dispatch(toggleStatusTodo(id));
   };
@@ -111,6 +112,7 @@ const Todo = styled.div`
   background-color: #fffdf6;
   background-color: ${(props)=>props.rgba};
   margin: 0 30px 30px 0;
+  box-shadow: 5px 5px 5px 5px gray;
 `;
 
 const StDetailBtn = styled.button`

@@ -4,8 +4,8 @@ import styled from "styled-components";
 const Header = () => {
     return (
         <StHeader>
-            <h4>My Todo List</h4>
-            <h4>React</h4>
+            <h4>의미있는 삶을 위한 To Do List</h4>
+            <h4>SY</h4>
         </StHeader>
     )
 };
@@ -17,7 +17,7 @@ const StHeader = styled.div`
   display: flex;
   height: 50px;
   justify-content: space-between;
-  padding: 5px 20px;
+  padding: 10px 30px;
   margin: 0 0 20px 0;
   background-color: #ECE8D9;
 `;

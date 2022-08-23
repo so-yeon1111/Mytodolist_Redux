@@ -20,7 +20,7 @@ const List = () => {
 
   return (
     <StList>
-      <Title>Working</Title>
+      {/* <Title>Working</Title> */}
       <TodoContainer>
         {todoStore.map((todo) => {
           if (todo.isDone === false) {
@@ -47,22 +47,22 @@ const List = () => {
         })}
       </TodoContainer>
 
-      <Title>Done</Title>
-      <TodoContainer>
+      {/* <Title>Done</Title> */}
+      <TodoContainer >
         {todoStore.map((todo) => {
           if (todo.isDone === true) {
             return (
-              <Todo key={todo.id}>
-                <StDetailBtn onClick={() => navigate(`/detail/${todo.id}`)}>
+              <Todo key={todo.id} style={{backgroundColor:"rgba(0,0,0,0.5)"}}>
+                <StDetailBtn co={"gray"} onClick={() => navigate(`/detail/${todo.id}`)}>
                   상세보기
                 </StDetailBtn>
                 <TodoTitle>{todo.title}</TodoTitle>
                 <p>{todo.body}</p>
                 <ButtonSet>
-                  <Button bg={"#FAF6E9"} onClick={() => onDelete(todo.id)}>
+                  <Button bg={"#423F3E"} co={"gray"} onClick={() => onDelete(todo.id)}>
                     삭 제
                   </Button>
-                  <Button bg={"#F3C5C5"} onClick={() => onToggle(todo.id)}>
+                  <Button bg={"#2B2B2B"} co={"gray"} onClick={() => onToggle(todo.id)}>
                     {todo.isDone ? "취 소" : "완 료"}
                   </Button>
                 </ButtonSet>
@@ -82,24 +82,24 @@ const StList = styled.div`
   padding: 0 24px;
 `;
 
-const Title = styled.div`
-  display: flex;
-  justify-content: center;
-  font-size: 1.5em;
-  font-weight: bold;
-  margin: 10px auto;
-  height: 40px;
-  width: 200px;
-  border-radius: 15px;
-  background-color: #999B84;
-  padding: 10px;
-`;
+// const Title = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   font-size: 1.5em;
+//   font-weight: bold;
+//   margin: 10px auto;
+//   height: 40px;
+//   width: 200px;
+//   border-radius: 15px;
+//   background-color: #999B84;
+//   padding: 10px;
+// `;
 
 const TodoContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin: 30px auto auto 50px;
+  margin: 20px auto auto 50px;
   padding: 0 0 20px 0;
 `;
 
@@ -109,6 +109,7 @@ const Todo = styled.div`
   padding: 12px 24px 24px;
   width: 270px;
   background-color: #fffdf6;
+  background-color: ${(props)=>props.rgba};
   margin: 0 30px 30px 0;
 `;
 
@@ -122,6 +123,7 @@ const StDetailBtn = styled.button`
   color: white;
   background-color: #494949;
   cursor: pointer;
+  color: ${(props)=>props.co}
 `;
 
 const TodoTitle = styled.h2`
@@ -148,4 +150,5 @@ const Button = styled.button`
   width: 50%;
   font-weight: bold;
   background-color: ${(props) => props.bg};
+  color: ${(props)=>props.co};
 `;

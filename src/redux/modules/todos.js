@@ -34,13 +34,13 @@ const initialState = [
   { 
     id: 1, 
     title: "Redux로 Todolist 만들기", 
-    body: "에러 에러 에러 에러", 
+    body: "에러 저리갓 ", 
     isDone: false 
   },
   { 
     id: 2, 
-    title: "Redux", 
-    body: "Redux", 
+    title: "9시 출석체크", 
+    body: "일어나~!!!", 
     isDone: true 
   },
 ];

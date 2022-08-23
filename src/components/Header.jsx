@@ -1,13 +1,11 @@
 import React from "react";
-
-// styled-components를 사용하기 위해 import
 import styled from "styled-components";
 
-function Header() {
+const Header = () => {
     return (
         <StHeader>
-            <div>My Todo List</div>
-            <div>React</div>
+            <h4>My Todo List</h4>
+            <h4>React</h4>
         </StHeader>
     )
 };
@@ -15,10 +13,11 @@ export default Header;
 
 const StHeader = styled.div`
   align-items: center;
-  border: 1px solid #ddd;
+  border-radius: 12px;
   display: flex;
   height: 50px;
   justify-content: space-between;
-  padding: 0 20px;
-  margin: 20px auto;
-`
+  padding: 5px 20px;
+  margin: 0 0 20px 0;
+  background-color: #ECE8D9;
+`;

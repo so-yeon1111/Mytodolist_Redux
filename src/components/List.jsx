@@ -1,41 +1,41 @@
 import React from "react";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { toggleStatusTodo, deleteTodo } from "../redux/modules/todos";
+import { useNavigate } from "react-router-dom";
 
-import { useSelector } from "react-redux"; //useSelector 훅 임포트, state값을 조회한다
-import { useDispatch } from "react-redux"; //useDispatch 훅 임포트, 액션명령을 주고 받는다
-import { updateTodo, deleteTodo } from "../redux/modules/todos"; // 액션객체 임포트
-import { useNavigate } from "react-router-dom"; // 페이지 이동을 위한 useNavigate훅 임포트
-
-function List() {
+const List = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const todoStore = useSelector((state) => state.todos); //store 연결확인
+  const todoStore = useSelector((state) => state.todos);
 
-  // dispatch로 명령 전달
   const onDelete = (id) => {
     dispatch(deleteTodo(id));
   };
   const onToggle = (id) => {
-    dispatch(updateTodo(id));
+    dispatch(toggleStatusTodo(id));
   };
 
   return (
     <StList>
-      <Title>📃 Working 📃</Title>
+      <Title>Working</Title>
       <TodoContainer>
         {todoStore.map((todo) => {
           if (todo.isDone === false) {
             return (
               <Todo key={todo.id}>
                 <StDetailBtn onClick={() => navigate(`/detail/${todo.id}`)}>
-                  상세내용
+                  상세보기
                 </StDetailBtn>
                 <TodoTitle>{todo.title}</TodoTitle>
                 <p>{todo.body}</p>
                 <ButtonSet>
-                  <Button onClick={() => onDelete(todo.id)}>삭 제</Button>
-                  <Button onClick={() => onToggle(todo.id)}>
+                  <Button bg={"#FAF6E9"} onClick={() => onDelete(todo.id)}>
+                    삭 제
+                  </Button>
+                  <Button bg={"#F3C5C5"} onClick={() => onToggle(todo.id)}>
                     {todo.isDone ? "취 소" : "완 료"}
                   </Button>
                 </ButtonSet>
@@ -47,20 +47,22 @@ function List() {
         })}
       </TodoContainer>
 
-      <Title>🥇 Done 🥇</Title>
+      <Title>Done</Title>
       <TodoContainer>
         {todoStore.map((todo) => {
           if (todo.isDone === true) {
             return (
               <Todo key={todo.id}>
                 <StDetailBtn onClick={() => navigate(`/detail/${todo.id}`)}>
-                  상세내용
+                  상세보기
                 </StDetailBtn>
                 <TodoTitle>{todo.title}</TodoTitle>
                 <p>{todo.body}</p>
                 <ButtonSet>
-                  <Button onClick={() => onDelete(todo.id)}>삭 제</Button>
-                  <Button onClick={() => onToggle(todo.id)}>
+                  <Button bg={"#FAF6E9"} onClick={() => onDelete(todo.id)}>
+                    삭 제
+                  </Button>
+                  <Button bg={"#F3C5C5"} onClick={() => onToggle(todo.id)}>
                     {todo.isDone ? "취 소" : "완 료"}
                   </Button>
                 </ButtonSet>
@@ -73,50 +75,53 @@ function List() {
       </TodoContainer>
     </StList>
   );
-}
+};
 
 export default List;
 const StList = styled.div`
   padding: 0 24px;
 `;
 
-const Title = styled.h2`
-  display: block;
+const Title = styled.div`
+  display: flex;
+  justify-content: center;
   font-size: 1.5em;
-  margin-block-start: 0.83em;
-  margin-block-end: 0.83em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
   font-weight: bold;
-
-  text-align: center;
-  padding: 15px;
+  margin: 10px auto;
+  height: 40px;
+  width: 200px;
+  border-radius: 15px;
+  background-color: #999B84;
+  padding: 10px;
 `;
 
 const TodoContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+  margin: 30px auto auto 50px;
+  padding: 0 0 20px 0;
 `;
 
 const Todo = styled.div`
-  border: 4px solid teal;
+  border: 4px solid #494949;
   border-radius: 12px;
   padding: 12px 24px 24px;
   width: 270px;
+  background-color: #fffdf6;
+  margin: 0 30px 30px 0;
 `;
 
 const StDetailBtn = styled.button`
-  float: right; // 오른쪽 상단으로 버튼을
   box-sizing: border-box;
-  border-radius: 20px;
+  border-radius: 15px;
   border: none;
-  padding: 5px 10px;
+  padding: 7px 10px;
+  margin: 10px 0 0 0;
   width: 90px;
+  color: white;
+  background-color: #494949;
   cursor: pointer;
-  &:hover {
-    width: 100px;
-  }
 `;
 
 const TodoTitle = styled.h2`
@@ -137,9 +142,10 @@ const ButtonSet = styled.div`
 
 const Button = styled.button`
   border-radius: 8px;
+  border: none;
   cursor: pointer;
   height: 40px;
   width: 50%;
-  background-color: #fff;
-  border: 2px solid
+  font-weight: bold;
+  background-color: ${(props) => props.bg};
 `;

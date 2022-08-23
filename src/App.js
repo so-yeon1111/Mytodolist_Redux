@@ -1,10 +1,9 @@
 import React from "react";
 import './App.css';
-import Router from "./shared/Router";  // Router import
+import Router from "./shared/Router"; 
 
-function App() {
+const  App = () => {
   return (
-    // 페이지 구성을 Router에서 관리(왜? 가장 상위 컴포넌트니까)
     <Router />
   );
 }

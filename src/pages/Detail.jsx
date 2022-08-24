@@ -18,10 +18,9 @@ const Detail = () => {
         </StHeadContainer>
 
         {todos.map((todo) => {
-          // pram.id의 타입은 문자열, todo.id는 숫자여서 형변환
-          if (todo.id === parseInt(param.id)) {
+          if (todo.id == param.id) {
             return (
-              <StTodoDescBox>
+              <StTodoDescBox key={todo.id}>
                 <h2>{todo.title}</h2>
                 <p>{todo.body}</p>
               </StTodoDescBox>

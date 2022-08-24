@@ -48,7 +48,6 @@ const initialState = [
 // Reducer: todos
 const todos = (state = initialState, action) => {
 
-  console.log(action)
   switch (action.type) {
     case ADD_TODO:
       const newTodo = [...state, action.payload];
@@ -73,5 +72,4 @@ const todos = (state = initialState, action) => {
   }
 };
 
-// 모듈에서 reducer를 export default
 export default todos;

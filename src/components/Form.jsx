@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { addTodo } from "../redux/modules/todos"; //액션객체 임포트
+import { addTodo } from "../redux/modules/todos";
 
 let nextId = 3;
 
 function Form() {
-  // dispatch 생성
   const dispatch = useDispatch();
 
-  // input을 통해 들어오는 변화값을 받는 state
   const [todo, setTodo] = useState({
     id: 0,
     title: "",
@@ -22,13 +20,13 @@ function Form() {
     setTodo({ ...todo, [name]: value, id: nextId });
   };
 
-
   const onSubmitHandler = (e) => {
     e.preventDefault();
     nextId++; 
     dispatch(addTodo({ ...todo }));
-    setTodo({ id: 0, title: "", body: "", isDone: false });
+    setTodo({ id: 0, title: "", body: "", isDone: false })
   };
+  
 
   return (
     <StForm onSubmit={onSubmitHandler}>
